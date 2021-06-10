@@ -66,3 +66,13 @@ SavePath = ""
 TotalLoadedFiles = 0
 settingData = settings()
 Loadingdilay = 0.04
+
+def getListOfDirWithBasePath(basepath, extantion=SupportedExtantion):
+    list = []
+    with os.scandir(basepath) as entries:
+        for entry in entries:
+            filedict = {'file': entry.name,
+                        'path': os.path.join(basepath, entry.name)}
+            if isFile(filedict['path'], SupportedExtantion):
+                list.append(filedict)
+    return list
