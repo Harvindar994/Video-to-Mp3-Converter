@@ -12,3 +12,12 @@ class settings:
         self.filename = 'record.txt'
         self.lastOuputPath = 'c:/'
         self.lastFileLoadingPath = 'c:/'
+
+    def openfile(self, mode='wb'):
+        try:
+            file = open(self.filename, mode)
+        except FileNotFoundError:
+            return False
+        except FileExistsError:
+            return False
+        return file
