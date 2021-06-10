@@ -76,3 +76,8 @@ def getListOfDirWithBasePath(basepath, extantion=SupportedExtantion):
             if isFile(filedict['path'], SupportedExtantion):
                 list.append(filedict)
     return list
+
+def isDir(path):
+    if os.path.isdir(path):
+        return True
+    return False
