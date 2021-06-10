@@ -39,3 +39,21 @@ class settings:
                 return False
             return True
         return False
+
+    def readSettings(self):
+        file = self.openfile('rb')
+        if file != False:
+            try:
+                data = pickle.load(file)
+                self.lastFileLoadingPath = data.lastFileLoadingPath
+                self.lastOuputPath = data.lastOuputPath
+                self.closeFile(file)
+            except:
+                self.lastOuputPath = ''
+                self.lastFileLoadingPath = 'c:/'
+                return False
+            return True
+        else:
+            self.lastOuputPath = ''
+            self.lastFileLoadingPath = 'c:/'
+            return False
