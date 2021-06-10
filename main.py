@@ -21,3 +21,21 @@ class settings:
         except FileExistsError:
             return False
         return file
+
+    def closeFile(self, file):
+        try:
+            file.close()
+        except:
+            return False
+        return True
+
+    def saveSettings(self):
+        file = self.openfile()
+        if file != False:
+            try:
+                pickle.dump(self, file)
+                self.closeFile(file)
+            except:
+                return False
+            return True
+        return False
