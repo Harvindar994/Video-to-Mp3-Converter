@@ -57,3 +57,12 @@ class settings:
             self.lastOuputPath = ''
             self.lastFileLoadingPath = 'c:/'
             return False
+
+# Global Data exchanger.
+SupportedExtantion = ['mp4',]
+FilesList = []
+Status = ""
+SavePath = ""
+TotalLoadedFiles = 0
+settingData = settings()
+Loadingdilay = 0.04
