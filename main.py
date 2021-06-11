@@ -81,3 +81,10 @@ def isDir(path):
     if os.path.isdir(path):
         return True
     return False
+
+def getExtantion(file):
+    lenth = len(file) - 1
+    while file[lenth] != '.' and lenth >= 0:
+        lenth -= 1
+    extantion = file[lenth+1::]
+    return extantion
