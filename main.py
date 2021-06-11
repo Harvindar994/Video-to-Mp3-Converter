@@ -176,3 +176,33 @@ class Files(QtWidgets.QFrame):
         self.deleteicon = "Media/delete.png"
         self.tickicon = "Media/check.png"
         self.setup_Ui()
+
+    def setup_Ui(self):
+        self.setToolTip(self.file)
+        self.setStyleSheet("QFrame{\n"
+                           "background-color: #86C2EB;\n"
+                           "color: black;\n"
+                           "border: 0px solid black;\n"
+                           "border-bottom: 2px solid #3C3F41;\n"
+                           "border-radius: 3px;\n"
+                           "}\n"
+                           "QLabel{\n"
+                           "border: 0px solid black;\n"
+                           "}\n"
+                           "QPushButton{\n"
+                           "background-color: transparent;\n"
+                           "margin-left: 5px;\n"
+                           "}")
+        self.mainLayout = QtWidgets.QHBoxLayout()
+        self.mainLayout.setSpacing(0)
+        self.setLayout(self.mainLayout)
+        self.filename = QtWidgets.QLabel(self.file)
+        self.mainLayout.addWidget(self.filename)
+        self.mainLayout.addItem(getHSpacerItem())
+        self.indigator = QtWidgets.QPushButton()
+        self.mainLayout.addWidget(self.indigator)
+        self.delete = QtWidgets.QPushButton()
+        self.delete.setCursor(get_QCursor('pointer'))
+        clickable(self.delete, self.removeFile, self)
+        self.delete.setIcon(getQIcon(self.deleteicon))
+        self.mainLayout.addWidget(self.delete)
