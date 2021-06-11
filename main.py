@@ -88,3 +88,10 @@ def getExtantion(file):
         lenth -= 1
     extantion = file[lenth+1::]
     return extantion
+
+def getFileName(file):
+    lenth = len(file) - 1
+    while file[lenth] != '.' and lenth >= 0:
+        lenth -= 1
+    filename = file[0:lenth]
+    return filename
