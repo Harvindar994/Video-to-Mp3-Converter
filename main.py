@@ -123,3 +123,21 @@ def get_Qpixmap(img):
 def get_QCursor(cursor):
     if cursor == 'pointer':
         return QtCore.Qt.PointingHandCursor
+
+def clickable(widget, function, argument=None):
+    class Filter(QObject):
+        def setFunctionAndValues(self, Widget, Function, Argument=None):
+            self.ObjData = [Widget, Function, Argument]
+
+        def eventFilter(self, obj, event):
+            if obj == self.ObjData[0]:
+                if event.type() == QEvent.MouseButtonRelease:
+                    if obj.rect().contains(event.pos()):
+                        self.ObjData[1](self.ObjData[2]) if self.ObjData[2] is not None else self.ObjData[1]()
+                        # The developer can opt for .emit(obj) to get the object within the slot.
+                        return True
+            return False
+
+    filter = Filter(widget)
+    filter.setFunctionAndValues(widget, function, argument)
+    widget.installEventFilter(filter)
