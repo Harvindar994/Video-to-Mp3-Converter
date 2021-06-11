@@ -107,3 +107,6 @@ def isFile(path, extantion=SupportedExtantion):
         else:
             return True
     return False
+
+def getVSpaceItem():
+    return QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
