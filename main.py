@@ -206,3 +206,11 @@ class Files(QtWidgets.QFrame):
         clickable(self.delete, self.removeFile, self)
         self.delete.setIcon(getQIcon(self.deleteicon))
         self.mainLayout.addWidget(self.delete)
+
+    def setIndigator(self, indigate = 'tick'):
+        if indigate == 'tick':
+            self.indigator.setIcon(getQIcon(self.tickicon))
+            self.convertedStatus = True
+        else:
+            self.indigator.setIcon(getQIcon(self.warning))
+            self.convertedStatus = None
