@@ -113,3 +113,13 @@ def getVSpaceItem():
 
 def getHSpacerItem():
     return QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+
+def getQIcon(path):
+    return QtGui.QIcon(path)
+
+def get_Qpixmap(img):
+    return QtGui.QPixmap(img)
+
+def get_QCursor(cursor):
+    if cursor == 'pointer':
+        return QtCore.Qt.PointingHandCursor
