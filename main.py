@@ -141,3 +141,24 @@ def clickable(widget, function, argument=None):
     filter = Filter(widget)
     filter.setFunctionAndValues(widget, function, argument)
     widget.installEventFilter(filter)
+
+
+def getScrollArea(ElementContainnerPosition = 'up'):
+    ScrollArea = QtWidgets.QScrollArea()
+    ScrollArea.setWidgetResizable(True)
+
+    GroupBox = QtWidgets.QGroupBox(ScrollArea)
+    ScrollArea.setWidget(GroupBox)
+
+    GroupBoxLayout = QtWidgets.QVBoxLayout(GroupBox)
+    GroupBox.setLayout(GroupBoxLayout)
+
+    ElementContainnerLayout = QtWidgets.QVBoxLayout(GroupBox)
+    if ElementContainnerPosition == 'up':
+        GroupBoxLayout.addLayout(ElementContainnerLayout)
+        GroupBoxLayout.addItem(getVSpaceItem())
+    else:
+        GroupBoxLayout.addItem(getVSpaceItem())
+        GroupBoxLayout.addLayout(ElementContainnerLayout)
+
+    return [ScrollArea, GroupBox, GroupBoxLayout, ElementContainnerLayout]
