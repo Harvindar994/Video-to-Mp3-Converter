@@ -95,3 +95,15 @@ def getFileName(file):
         lenth -= 1
     filename = file[0:lenth]
     return filename
+
+def isFile(path, extantion=SupportedExtantion):
+    if os.path.isfile(path):
+        if extantion != None:
+            ext = getExtantion(path)
+            if ext in extantion:
+                return True
+            else:
+                return False
+        else:
+            return True
+    return False
