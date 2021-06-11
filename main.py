@@ -162,3 +162,17 @@ def getScrollArea(ElementContainnerPosition = 'up'):
         GroupBoxLayout.addLayout(ElementContainnerLayout)
 
     return [ScrollArea, GroupBox, GroupBoxLayout, ElementContainnerLayout]
+
+
+
+class Files(QtWidgets.QFrame):
+    def __init__(self, filename, path, RemoveFile):
+        super(Files, self).__init__()
+        self.file = filename
+        self.path = path
+        self.removeFile = RemoveFile
+        self.convertedStatus = False
+        self.warning = "Media/warning.png"
+        self.deleteicon = "Media/delete.png"
+        self.tickicon = "Media/check.png"
+        self.setup_Ui()
