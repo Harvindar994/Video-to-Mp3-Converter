@@ -110,3 +110,6 @@ def isFile(path, extantion=SupportedExtantion):
 
 def getVSpaceItem():
     return QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+
+def getHSpacerItem():
+    return QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
