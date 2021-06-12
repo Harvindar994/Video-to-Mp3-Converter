@@ -257,3 +257,23 @@ class BackendThread(QtCore.QRunnable):
         self.Sig_RemoveAllFile = 'removeAllFile'
         self.Sig_ConvertingProcess = False
         self.Sig_LoadingProcess = False
+
+
+    @QtCore.pyqtSlot()
+    def run(self):
+        self.loadApplication()
+        self.loadFiles(sys.argv)
+        while self.BackThreadLife:
+            while True:
+                try:
+                    signal = self.SignalsList.pop()
+                except IndexError:
+                    break
+                if self.Sig_LoadFile in signal:
+                    data = signal[self.Sig_LoadFile]
+                    if type(data) == list:
+                        self.loadFiles(data)
+                if self.Sig_RemoveAllFile in signal:
+                    self.removeAllFiles()
+                if self.Sig_Convert in signal:
+                    self.convert(FilesList)
