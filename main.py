@@ -288,3 +288,32 @@ class BackendThread(QtCore.QRunnable):
     def createProcess(self, name, data=None):
         process = {name:data}
         self.SignalsList.insert(0,process)
+        
+    def loadFiles(self, paths=[]):
+        global SupportedExtantion
+        self.Sig_LoadingProcess = True
+        self.signals.hidewidgets.emit('show_loadingButton')
+        for path in paths:
+            if self.Sig_LoadingProcess:
+                if isDir(path):
+                    list = getListOfDirWithBasePath(path, SupportedExtantion)
+                    for filedict in list:
+                        if self.Sig_LoadingProcess:
+                            self.signals.insert_File.emit(filedict)
+                            time.sleep(Loadingdilay)
+                        else:
+                            self.signals.hidewidgets.emit('hide_loadingButton')
+                            self.Sig_LoadingProcess = False
+                            return False
+                elif isFile(path, SupportedExtantion):
+                    filedict = {'file': os.path.basename(path),
+                                'path': path}
+                    self.signals.insert_File.emit(filedict)
+                    time.sleep(Loadingdilay)
+            else:
+                self.signals.hidewidgets.emit('hide_loadingButton')
+                self.Sig_LoadingProcess = False
+                return False
+        self.signals.hidewidgets.emit('hide_loadingButton')
+        self.Sig_LoadingProcess = False
+        return True
