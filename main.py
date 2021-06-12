@@ -277,3 +277,9 @@ class BackendThread(QtCore.QRunnable):
                     self.removeAllFiles()
                 if self.Sig_Convert in signal:
                     self.convert(FilesList)
+
+    def loadApplication(self):
+        for percentage in range(0,101):
+            self.signals.progress.emit(percentage)
+            time.sleep(0.03)
+        self.signals.hidewidgets.emit('hide_welcomeScreen')
