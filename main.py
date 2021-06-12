@@ -328,4 +328,9 @@ class BackendThread(QtCore.QRunnable):
             self.signals.remove_File.emit(file)
         self.ui.removeall.setText('Remove all')
 
-    
+    def getUnconvertedSong(self, files):
+        unConverted = []
+        for file in files:
+            if file.convertedStatus == False:
+                unConverted.append(file)
+        return unConverted
