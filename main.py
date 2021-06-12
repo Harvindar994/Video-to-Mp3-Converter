@@ -242,3 +242,18 @@ class WorkerSignals(QObject):
     progress = QtCore.pyqtSignal(int)
     message = QtCore.pyqtSignal(object)
     hidewidgets = QtCore.pyqtSignal(object)
+
+
+class BackendThread(QtCore.QRunnable):
+    def __init__(self, user_interface):
+        super(BackendThread, self).__init__()
+        self.ui = user_interface
+        self.signals = WorkerSignals()
+        self.BackThreadLife = True
+        self.SignalsList = []
+        self.processingStatus = ""
+        self.Sig_LoadFile = 'loadfile'
+        self.Sig_Convert = 'convert'
+        self.Sig_RemoveAllFile = 'removeAllFile'
+        self.Sig_ConvertingProcess = False
+        self.Sig_LoadingProcess = False
