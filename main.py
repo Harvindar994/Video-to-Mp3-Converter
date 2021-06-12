@@ -288,7 +288,7 @@ class BackendThread(QtCore.QRunnable):
     def createProcess(self, name, data=None):
         process = {name:data}
         self.SignalsList.insert(0,process)
-        
+
     def loadFiles(self, paths=[]):
         global SupportedExtantion
         self.Sig_LoadingProcess = True
@@ -317,3 +317,15 @@ class BackendThread(QtCore.QRunnable):
         self.signals.hidewidgets.emit('hide_loadingButton')
         self.Sig_LoadingProcess = False
         return True
+
+    def removeAllFiles(self):
+        global FilesList
+        while True:
+            try:
+                file = FilesList.pop()
+            except IndexError:
+                break
+            self.signals.remove_File.emit(file)
+        self.ui.removeall.setText('Remove all')
+
+    
