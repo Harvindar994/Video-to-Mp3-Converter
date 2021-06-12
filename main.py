@@ -214,3 +214,31 @@ class Files(QtWidgets.QFrame):
         else:
             self.indigator.setIcon(getQIcon(self.warning))
             self.convertedStatus = None
+
+
+class WorkerSignals(QObject):
+    '''
+    Defines the signals available from a running worker thread.
+
+    Supported signals are:
+
+    finished
+        No data
+
+    error
+        `tuple` (exctype, value, traceback.format_exc() )
+
+    result
+        `object` data returned from processing, anything
+
+    progress
+        `int` indicating % progress
+
+    '''
+    finished = QtCore.pyqtSignal()
+    error = QtCore.pyqtSignal(tuple)
+    insert_File = QtCore.pyqtSignal(object)
+    remove_File = QtCore.pyqtSignal(object)
+    progress = QtCore.pyqtSignal(int)
+    message = QtCore.pyqtSignal(object)
+    hidewidgets = QtCore.pyqtSignal(object)
