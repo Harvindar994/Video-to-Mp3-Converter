@@ -283,3 +283,8 @@ class BackendThread(QtCore.QRunnable):
             self.signals.progress.emit(percentage)
             time.sleep(0.03)
         self.signals.hidewidgets.emit('hide_welcomeScreen')
+
+
+    def createProcess(self, name, data=None):
+        process = {name:data}
+        self.SignalsList.insert(0,process)
