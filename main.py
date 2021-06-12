@@ -334,3 +334,17 @@ class BackendThread(QtCore.QRunnable):
             if file.convertedStatus == False:
                 unConverted.append(file)
         return unConverted
+
+    def convert(self, videoFiles):
+        files = self.getUnconvertedSong(videoFiles)
+        TotalFiles = len(files)
+        if TotalFiles <= 0 and len(FilesList) > 0:
+            self.signals.message.emit(['All song converted', 'All Song already converted into Mp3, Please load new files is you want to convert', QtWidgets.QMessageBox.Ok])
+            self.ui.convert.setText('Convert to Mp3')
+            return
+        elif len(FilesList) <= 0:
+            self.signals.message.emit(['No files',
+                                       'No files available, please load files to convert.',
+                                       QtWidgets.QMessageBox.Ok])
+            self.ui.convert.setText('Convert to Mp3')
+            return
