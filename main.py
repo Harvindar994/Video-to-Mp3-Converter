@@ -412,3 +412,23 @@ class WelcomeScreen(QtWidgets.QFrame):
                                  "border: 0px;\n"
                                  "background: transparent;\n"
                                  "}")
+
+        self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame.setObjectName("frame")
+        self.horizontalLayout_4 = QtWidgets.QHBoxLayout(self.frame)
+        self.horizontalLayout_4.setContentsMargins(5, 5, 5, 5)
+        self.horizontalLayout_4.setSpacing(0)
+        self.horizontalLayout_4.setObjectName("horizontalLayout_4")
+        spacerItem = QtWidgets.QSpacerItem(664, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_4.addItem(spacerItem)
+        self.pushButton = QtWidgets.QPushButton(self.frame)
+        self.pushButton.setStyleSheet("QPushButton{\n"
+"background-color: #3C3F41;\n"
+"border: 0px solid gray;\n"
+"padding: 5px;\n"
+"\n"
+"}\n"
+"QPushButton:hover{\n"
+"background-color: #05B8CC;\n"
+"}")
