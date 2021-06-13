@@ -376,3 +376,12 @@ class BackendThread(QtCore.QRunnable):
         self.ui.progressBar.hide()
         self.ui.convert.setText('Convert to Mp3')
         self.Sig_ConvertingProcess = False
+
+    def convertIntoMp3(self, filename, outputfile):
+        try:
+            video = VideoFileClip(filename)
+            audio = video.audio
+            audio.write_audiofile(outputfile)
+        except:
+            return False
+        return True
