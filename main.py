@@ -526,3 +526,18 @@ class WelcomeScreen(QtWidgets.QFrame):
         Form.setWindowTitle(_translate("Form", "Form"))
         self.label_2.setText(_translate("Form", "Brightgoal"))
         self.label_3.setText(_translate("Form", "Harvindar Singh"))
+
+
+class Ui_Brightgoal(QtWidgets.QWidget):
+    def __init__(self):
+        super(Ui_Brightgoal, self).__init__()
+        self.setupUi(self)
+        self.welcomeScreen = WelcomeScreen()
+        self.threadpool = QtCore.QThreadPool()
+        self.BackendThread = BackendThread(self)
+        self.BackendThread.signals.insert_File.connect(self.insertFile_in_list)
+        self.BackendThread.signals.remove_File.connect(self.removeFile)
+        self.BackendThread.signals.progress.connect(self.setProgressValue)
+        self.BackendThread.signals.message.connect(self.show_message)
+        self.BackendThread.signals.hidewidgets.connect(self.hideWedget)
+        self.threadpool.start(self.BackendThread)
