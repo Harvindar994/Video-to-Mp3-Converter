@@ -392,3 +392,23 @@ class WelcomeScreen(QtWidgets.QFrame):
         super(WelcomeScreen, self).__init__()
         self.setupUi(self)
         self.show()
+
+
+    def setupUi(self, Form):
+        WindowFlag = QtCore.Qt.WindowFlags(QtCore.Qt.FramelessWindowHint | QtCore.Qt.WindowStaysOnTopHint)
+        self.setWindowFlags(WindowFlag)
+        Form.setObjectName("Form")
+        self.setStyleSheet("QFrame{\n"
+                           "border: 0px solid Green;\n"
+                           "border-bottom: 4px solid #2B2B2B;\n"
+                           "background-image: url(media/image/background/wsb.jpg)"
+                           "}")
+        Form.resize(715, 328)
+        self.verticalLayout_2 = QtWidgets.QVBoxLayout(Form)
+        self.verticalLayout_2.setContentsMargins(-1, 9, -1, 38)
+        self.verticalLayout_2.setObjectName("verticalLayout_2")
+        self.frame = QtWidgets.QFrame(Form)
+        self.frame.setStyleSheet("QFrame{\n"
+                                 "border: 0px;\n"
+                                 "background: transparent;\n"
+                                 "}")
