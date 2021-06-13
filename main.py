@@ -432,3 +432,87 @@ class WelcomeScreen(QtWidgets.QFrame):
 "QPushButton:hover{\n"
 "background-color: #05B8CC;\n"
 "}")
+        self.pushButton.setText("")
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap("Media/Image/Icon/close white.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.pushButton.setIcon(icon)
+        self.pushButton.setIconSize(QtCore.QSize(12, 12))
+        self.pushButton.setObjectName("pushButton")
+        self.horizontalLayout_4.addWidget(self.pushButton)
+        self.verticalLayout_2.addWidget(self.frame)
+        spacerItem1 = QtWidgets.QSpacerItem(20, 0, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_2.addItem(spacerItem1)
+        self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_3.setContentsMargins(-1, 32, -1, -1)
+        self.horizontalLayout_3.setSpacing(0)
+        self.horizontalLayout_3.setObjectName("horizontalLayout_3")
+        spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_3.addItem(spacerItem2)
+        self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_2.setSpacing(0)
+        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
+        self.label = QtWidgets.QLabel(Form)
+        self.label.setMaximumSize(QtCore.QSize(117, 117))
+        self.label.setText("")
+        self.label.setStyleSheet('border: 0px;\n'
+                                 'background: transparent;')
+        self.label.setPixmap(QtGui.QPixmap("D:/Blog/Brightgoal.in/logo/ddd.png"))
+        self.label.setScaledContents(True)
+        self.label.setObjectName("label")
+        self.horizontalLayout_2.addWidget(self.label)
+        self.verticalLayout = QtWidgets.QVBoxLayout()
+        self.verticalLayout.setSpacing(0)
+        self.verticalLayout.setObjectName("verticalLayout")
+        self.label_2 = QtWidgets.QLabel(Form)
+        font = QtGui.QFont()
+        font.setPointSize(51)
+        self.label_2.setFont(font)
+        self.label_2.setObjectName("label_2")
+        self.verticalLayout.addWidget(self.label_2)
+        self.horizontalLayout = QtWidgets.QHBoxLayout()
+        self.horizontalLayout.setSpacing(0)
+        self.horizontalLayout.setObjectName("horizontalLayout")
+        spacerItem3 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem3)
+        self.label_3 = QtWidgets.QLabel(Form)
+        self.label_2.setStyleSheet("border: 0px;\n"
+                                   "background: transparent;\n"
+                                   "color: #2b2b2b;")
+        self.label_3.setStyleSheet("border: 0px;\n"
+                                   "background: transparent;\n"
+                                   "color: #2b2b2b")
+        font = QtGui.QFont()
+        font.setPointSize(18)
+        self.label_3.setFont(font)
+        self.label_3.setObjectName("label_3")
+        self.horizontalLayout.addWidget(self.label_3)
+        self.verticalLayout.addLayout(self.horizontalLayout)
+        self.horizontalLayout_2.addLayout(self.verticalLayout)
+        self.horizontalLayout_3.addLayout(self.horizontalLayout_2)
+        spacerItem4 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_3.addItem(spacerItem4)
+        self.verticalLayout_2.addLayout(self.horizontalLayout_3)
+        spacerItem5 = QtWidgets.QSpacerItem(20, 71, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_2.addItem(spacerItem5)
+        self.progressBar = QtWidgets.QProgressBar(Form)
+        self.progressBar.setMinimumSize(QtCore.QSize(0, 6))
+        self.progressBar.setMaximumSize(QtCore.QSize(16777215, 6))
+        self.progressBar.setStyleSheet("QProgressBar {\n"
+"    border: 0px solid grey;\n"
+"    border-radius: 0px;\n"
+"}\n"
+"\n"
+"QProgressBar::chunk {\n"
+"    background-color: #41CD52;\n"
+"    width: 0.5px;\n"
+"}")#05B8CC
+        self.progressBar.setProperty("value", 23)
+        self.progressBar.setValue(0)
+        self.progressBar.setTextVisible(False)
+        self.progressBar.setInvertedAppearance(False)
+        self.progressBar.setTextDirection(QtWidgets.QProgressBar.TopToBottom)
+        self.progressBar.setObjectName("progressBar")
+        self.verticalLayout_2.addWidget(self.progressBar)
+
+        self.retranslateUi(Form)
+        QtCore.QMetaObject.connectSlotsByName(Form)
