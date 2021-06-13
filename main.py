@@ -385,3 +385,10 @@ class BackendThread(QtCore.QRunnable):
         except:
             return False
         return True
+
+
+class WelcomeScreen(QtWidgets.QFrame):
+    def __init__(self):
+        super(WelcomeScreen, self).__init__()
+        self.setupUi(self)
+        self.show()
