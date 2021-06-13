@@ -516,3 +516,6 @@ class WelcomeScreen(QtWidgets.QFrame):
 
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
+
+    def set_percentage(self, percentage):
+        self.progressBar.setValue(percentage)
