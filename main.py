@@ -348,3 +348,31 @@ class BackendThread(QtCore.QRunnable):
                                        QtWidgets.QMessageBox.Ok])
             self.ui.convert.setText('Convert to Mp3')
             return
+
+        TotalConvertedSong = 0
+        ProgressBarStepValue = 100/TotalFiles
+        ProgressBarValue = 0.0
+        self.ui.processname.setText('Converting 0/'+str(TotalFiles))
+        self.ui.status.setText('0%')
+        self.ui.progressBar.setValue(0)
+        self.ui.processname.show()
+        self.ui.status.show()
+        self.ui.progressBar.show()
+        self.Sig_ConvertingProcess = True
+        self.ui.convert.setText('Stop converting')
+        for file in files:
+            if self.Sig_ConvertingProcess:
+                outputFile = os.path.join(SavePath, getFileName(file.file) + '.mp3')
+                if self.convertIntoMp3(file.path, outputFile):
+                    file.setIndigator()
+                else:
+                    file.setIndigator('warning')
+                TotalConvertedSong += 1
+                ProgressBarValue += ProgressBarStepValue
+                self.signals.progress.emit(int(ProgressBarValue))
+                self.ui.processname.setText('Converting '+str(TotalConvertedSong)+'/'+str(TotalLoadedFiles))
+        self.ui.processname.hide()
+        self.ui.status.hide()
+        self.ui.progressBar.hide()
+        self.ui.convert.setText('Convert to Mp3')
+        self.Sig_ConvertingProcess = False
