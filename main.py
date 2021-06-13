@@ -541,3 +541,17 @@ class Ui_Brightgoal(QtWidgets.QWidget):
         self.BackendThread.signals.message.connect(self.show_message)
         self.BackendThread.signals.hidewidgets.connect(self.hideWedget)
         self.threadpool.start(self.BackendThread)
+
+
+    def setupUi(self, Brightgoal):
+        Brightgoal.setObjectName("Brightgoal")
+        Brightgoal.resize(693, 543)
+        self.MainVLayout = QtWidgets.QVBoxLayout(Brightgoal)
+        self.MainVLayout.setObjectName("MainVLayout")
+        self.TopTitleHLyout = QtWidgets.QHBoxLayout()
+        self.TopTitleHLyout.setObjectName("TopTitleHLyout")
+        self.SoftwareTitle = QtWidgets.QLabel(Brightgoal)
+        self.SoftwareTitle.setMaximumSize(QtCore.QSize(16777211, 20))
+        self.SoftwareTitle.setObjectName("SoftwareTitle")
+        self.TopTitleHLyout.addWidget(self.SoftwareTitle)
+        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
