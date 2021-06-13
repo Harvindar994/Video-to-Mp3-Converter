@@ -519,3 +519,10 @@ class WelcomeScreen(QtWidgets.QFrame):
 
     def set_percentage(self, percentage):
         self.progressBar.setValue(percentage)
+
+    def retranslateUi(self, Form):
+        self.pushButton.hide()
+        _translate = QtCore.QCoreApplication.translate
+        Form.setWindowTitle(_translate("Form", "Form"))
+        self.label_2.setText(_translate("Form", "Brightgoal"))
+        self.label_3.setText(_translate("Form", "Harvindar Singh"))
