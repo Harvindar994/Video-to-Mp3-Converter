@@ -674,7 +674,20 @@ class Ui_Brightgoal(QtWidgets.QWidget):
         else:
             self.progressBar.setValue(value)
             self.status.setText(str(value)+'%')
-            
+
+
+    def BrowseFile(self):
+        settingData.readSettings()
+        frame = QtWidgets.QFileDialog.getOpenFileNames(self, 'Select Video Files', settingData.lastFileLoadingPath, '(*.mp4)')
+        if len(frame[0]) > 0:
+            path = frame[0][0]
+            if not os.path.isdir(path):
+                path = os.path.split(path)
+                path = path[0]
+            settingData.lastFileLoadingPath = path
+            settingData.saveSettings()
+            self.BackendThread.createProcess(self.BackendThread.Sig_LoadFile, frame[0])
+
 
     def retranslateUi(self, Brightgoal):
         global SavePath
