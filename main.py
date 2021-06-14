@@ -668,6 +668,14 @@ class Ui_Brightgoal(QtWidgets.QWidget):
         msgBox = QtWidgets.QMessageBox.question(self, msg[0], msg[1], msg[2])
 
 
+    def setProgressValue(self, value):
+        if self.isHidden():
+            self.welcomeScreen.progressBar.setValue(value)
+        else:
+            self.progressBar.setValue(value)
+            self.status.setText(str(value)+'%')
+            
+
     def retranslateUi(self, Brightgoal):
         global SavePath
         _translate = QtCore.QCoreApplication.translate
