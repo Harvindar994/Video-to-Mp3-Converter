@@ -563,3 +563,15 @@ class Ui_Brightgoal(QtWidgets.QWidget):
         self.ScrollAreaFrame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.ScrollAreaFrame.setObjectName("ScrollAreaFrame")
         self.MainVLayout.addWidget(self.ScrollAreaFrame)
+
+        '''------------------Making scroll area------------------'''
+        self.ScrollAreaFrameLayout = QtWidgets.QVBoxLayout(self.ScrollAreaFrame)
+        self.ScrollAreaFrame.setLayout(self.ScrollAreaFrameLayout)
+        self.ScrollAreaFrameLayout.setContentsMargins(0, 0, 0, 0)
+        self.ScrollAreaFrameLayout.setSpacing(0)
+
+        self.ScrollareaElement = getScrollArea()
+        self.ScrollAreaFrameLayout.addWidget(self.ScrollareaElement[0])
+        self.ScrollAreaElementContainner = self.ScrollareaElement[3]
+
+        '''-----------------------------------------------'''
