@@ -637,3 +637,29 @@ class Ui_Brightgoal(QtWidgets.QWidget):
         self.progressBar.setObjectName("progressBar")
         self.verticalLayout.addWidget(self.progressBar)
         self.MainVLayout.addWidget(self.ControlAreaFrame)
+
+        self.retranslateUi(Brightgoal)
+        QtCore.QMetaObject.connectSlotsByName(Brightgoal)
+        self.connectButton()
+        self.processname.hide()
+        self.progressBar.hide()
+        self.status.hide()
+        self.Stoploading.hide()
+
+
+    def retranslateUi(self, Brightgoal):
+        global SavePath
+        _translate = QtCore.QCoreApplication.translate
+        Brightgoal.setWindowTitle(_translate("Brightgoal", "Video to Mp3 Converter"))
+        self.SoftwareTitle.setText(_translate("Brightgoal", "Video to Mp3 Converter By Harvindar Singh (www.brightgoal.in)"))
+        self.browsefiles.setText(_translate("Brightgoal", "Browse Files"))
+        self.removeall.setText(_translate("Brightgoal", "Remove all"))
+        self.details.setText(_translate("Brightgoal", "Total Song : 0"))
+        self.outputfolder.setText(_translate("Brightgoal", "Output folder"))
+        self.select.setText(_translate("Brightgoal", "Select"))
+        self.convert.setText(_translate("Brightgoal", "Convert to Mp3"))
+        self.processname.setText(_translate("Brightgoal", "Process Name"))
+        self.status.setText(_translate("Brightgoal", "Status"))
+        settingData.readSettings()
+        SavePath = settingData.lastOuputPath
+        self.lineEdit.setText(settingData.lastOuputPath)
