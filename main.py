@@ -655,6 +655,16 @@ class Ui_Brightgoal(QtWidgets.QWidget):
         self.convert.clicked.connect(self.converttoMp3)
 
 
+    def hideWedget(self, name):
+        if name == 'show_loadingButton':
+            self.Stoploading.show()
+        elif name == 'hide_loadingButton':
+            self.Stoploading.hide()
+        elif name == 'hide_welcomeScreen':
+            self.welcomeScreen.hide()
+            self.show()
+
+
     def retranslateUi(self, Brightgoal):
         global SavePath
         _translate = QtCore.QCoreApplication.translate
