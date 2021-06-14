@@ -647,6 +647,14 @@ class Ui_Brightgoal(QtWidgets.QWidget):
         self.Stoploading.hide()
 
 
+    def connectButton(self):
+        self.browsefiles.clicked.connect(self.BrowseFile)
+        self.Stoploading.clicked.connect(self.stopLoadingProcess)
+        self.removeall.clicked.connect(self.removeAllFile)
+        self.select.clicked.connect(self.selectSavePath)
+        self.convert.clicked.connect(self.converttoMp3)
+
+
     def retranslateUi(self, Brightgoal):
         global SavePath
         _translate = QtCore.QCoreApplication.translate
