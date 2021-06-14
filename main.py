@@ -688,6 +688,38 @@ class Ui_Brightgoal(QtWidgets.QWidget):
             settingData.saveSettings()
             self.BackendThread.createProcess(self.BackendThread.Sig_LoadFile, frame[0])
 
+    def converttoMp3(self):
+        global SavePath
+        if self.convert.text() == 'Please wait':
+            return
+        if self.convert.text() == 'Stop converting':
+            self.BackendThread.Sig_ConvertingProcess = False
+            self.convert.setText('Please wait')
+            return
+        if TotalLoadedFiles > 0:
+            if os.path.isdir(SavePath):
+                if self.BackendThread.Sig_LoadingProcess and self.convert.text() != 'Conversion active please wait':
+                    self.convert.setText('Conversion active please wait')
+                    self.BackendThread.createProcess(self.BackendThread.Sig_Convert)
+                elif not self.BackendThread.Sig_LoadingProcess and self.convert.text() == 'Convert to Mp3':
+                    self.BackendThread.createProcess(self.BackendThread.Sig_Convert)
+                else:
+                    return
+            else:
+                msgBox = QtWidgets.QMessageBox.question(self, 'Select Ouput Folder', "No selected output folder. "
+                                                        "Do you want to select Output Folder ?")
+                if msgBox == QtWidgets.QMessageBox.Yes:
+                    self.selectSavePath()
+                else:
+                    return
+        else:
+            msgBox = QtWidgets.QMessageBox.question(self, 'No Files', "No loaded File."
+                                                    " Do you want to browse files.")
+            if msgBox == QtWidgets.QMessageBox.Yes:
+                self.BrowseFile()
+            else:
+                return
+
 
     def retranslateUi(self, Brightgoal):
         global SavePath
