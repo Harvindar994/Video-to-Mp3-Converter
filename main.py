@@ -664,6 +664,9 @@ class Ui_Brightgoal(QtWidgets.QWidget):
             self.welcomeScreen.hide()
             self.show()
 
+    def show_message(self, msg):
+        msgBox = QtWidgets.QMessageBox.question(self, msg[0], msg[1], msg[2])
+
 
     def retranslateUi(self, Brightgoal):
         global SavePath
