@@ -734,6 +734,13 @@ class Ui_Brightgoal(QtWidgets.QWidget):
     def stopLoadingProcess(self):
         self.BackendThread.Sig_LoadingProcess = False
 
+    def removeAllFile(self):
+        if self.convert.text()!= 'Please wait' and not self.BackendThread.Sig_LoadingProcess and not self.BackendThread.Sig_ConvertingProcess and self.removeall.text() != 'Please Wait':
+            self.BackendThread.createProcess(self.BackendThread.Sig_RemoveAllFile, None)
+        elif self.removeall.text() != 'Please Wait':
+            self.removeall.setText('Please Wait')
+            self.BackendThread.createProcess(self.BackendThread.Sig_RemoveAllFile, None)
+
     def retranslateUi(self, Brightgoal):
         global SavePath
         _translate = QtCore.QCoreApplication.translate
