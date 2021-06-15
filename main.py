@@ -731,6 +731,9 @@ class Ui_Brightgoal(QtWidgets.QWidget):
             settingData.saveSettings()
             self.lineEdit.setText(SavePath)
 
+    def stopLoadingProcess(self):
+        self.BackendThread.Sig_LoadingProcess = False
+
     def retranslateUi(self, Brightgoal):
         global SavePath
         _translate = QtCore.QCoreApplication.translate
