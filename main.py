@@ -720,6 +720,16 @@ class Ui_Brightgoal(QtWidgets.QWidget):
             else:
                 return
 
+    def selectSavePath(self):
+        global SavePath
+        settingData.readSettings()
+        dilog = QtWidgets.QFileDialog(self, 'Video Files', settingData.lastOuputPath, '(*.mp4)')
+        dilog.setFileMode(QtWidgets.QFileDialog.Directory)
+        if dilog.exec_() == QtWidgets.QDialog.Accepted:
+            SavePath = dilog.selectedFiles()[0]
+            settingData.lastOuputPath = SavePath
+            settingData.saveSettings()
+            self.lineEdit.setText(SavePath)
 
     def retranslateUi(self, Brightgoal):
         global SavePath
