@@ -741,6 +741,22 @@ class Ui_Brightgoal(QtWidgets.QWidget):
             self.removeall.setText('Please Wait')
             self.BackendThread.createProcess(self.BackendThread.Sig_RemoveAllFile, None)
 
+    def removeFile(self, File=None):
+        global FilesList, TotalLoadedFiles
+        if self.BackendThread.Sig_ConvertingProcess:
+            msgBox = QtWidgets.QMessageBox.question(self, 'Warning', "You can't remove file while converting process.\n"
+                                                    "if you want to remove any file please stop conveting process.")
+            return
+        File.hide()
+        self.ScrollAreaElementContainner.removeWidget(File)
+        try:
+            FilesList.remove(File)
+        except:
+            pass
+        if TotalLoadedFiles > 0:
+            TotalLoadedFiles -= 1
+            self.details.setText("Total Song : " + str(TotalLoadedFiles))
+
     def retranslateUi(self, Brightgoal):
         global SavePath
         _translate = QtCore.QCoreApplication.translate
