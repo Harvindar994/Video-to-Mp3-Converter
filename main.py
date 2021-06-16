@@ -781,3 +781,9 @@ class Ui_Brightgoal(QtWidgets.QWidget):
         settingData.readSettings()
         SavePath = settingData.lastOuputPath
         self.lineEdit.setText(settingData.lastOuputPath)
+
+
+if __name__ == "__main__":
+    app = QtWidgets.QApplication(sys.argv)
+    ui = Ui_Brightgoal()
+    sys.exit(app.exec_())
