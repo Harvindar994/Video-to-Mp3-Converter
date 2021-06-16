@@ -757,6 +757,14 @@ class Ui_Brightgoal(QtWidgets.QWidget):
             TotalLoadedFiles -= 1
             self.details.setText("Total Song : " + str(TotalLoadedFiles))
 
+    def insertFile_in_list(self, filedict):
+        global TotalLoadedFiles, FilesList
+        File = Files(filedict['file'], filedict['path'], self.removeFile)
+        self.ScrollAreaElementContainner.addWidget(File)
+        FilesList.append(File)
+        TotalLoadedFiles += 1
+        self.details.setText("Total Song : " + str(TotalLoadedFiles))
+
     def retranslateUi(self, Brightgoal):
         global SavePath
         _translate = QtCore.QCoreApplication.translate
